@@ -20,8 +20,36 @@ La teoría de distribuciones se puede ver como una extensión de la diferenciaci
 de la misma manera que podemos ver la teoría de la medida como una extensión de la
 integración.
 
-El objetivo de ésta teoría es extender la clase de funciones derivables, extender
+El objetivo de ésta teoría es extender la clase de funciones derivables, más específicamente
 nuestra definición de diferenciación. Para conseguir esto, necesitamos construir
-una clase de funciones que cumplan los siguientes requisitos:
+una clase de objetos(que llamaremos \textbf{distribuciones}) que cumplan los siguientes requisitos:
+
+\begin{enumerate}
+	\item Toda función continua debe ser una distribución.
+	\item La nueva noción de derivada debe coincidir con la anterior.
+	\item Las derivadas parciales de toda distribución, deben ser también distribuciones.
+	\item Las propiedades usuales del cálculo deben conservarse.
+	\item Es necesario tener varios teoremas de convergencia para las distribuciones,
+		que nos permitan trabajar con límites.
+\end{enumerate}
+
+Esta nueva noción de distribuciones es de utilidad para formalizar varias ideas matemáticas que se usaban en el cálculo de manera intuitiva y nada formal, especialmente en la física a la hora de trabajar con ecuaciones diferenciales parciales. 
+
+Consideremos, por ejemplo, la función \textit{escalón de Heaviside} $ H $ definida por:
+
+\begin{equation}
+	H(x) = 
+	\begin{cases}
+		0, \qquad x < 0 \\
+		1, \qquad x \ge 0. 
+	\end{cases}
+\end{equation}
+
+Se dice que la "derivada" de esta función es la función delta de Dirac $ \delta(x) $, la cual se anula en todo su dominio salvo en el origen, en donde su valor es tan grande que tenemos que:
+\begin{equation}
+	\int_{-\infty}^{+\infty}\delta(x) dx = 1.
+\end{equation} 
+Esta "función" y sus "derivadas" es usada con bastante frecuencia en la matemática.
+Para definir la función delta de Dirac, es necesario utilizar la noción de medida.
 
 \end{document}
