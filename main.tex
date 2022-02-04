@@ -1,9 +1,25 @@
 \documentclass[letter,12pt]{article}
-\usepackage{presets}
+\usepackage{graphicx}
+\usepackage[spanish]{babel}
+\usepackage{amsthm}
+\usepackage{tikz}
+\usepackage{bm}
+\usepackage{amsmath}
+\usepackage{amsfonts}
+\usepackage{amssymb}
+
+%---Definitions
+\newtheorem{lemma}{Lema}
+\newtheorem{remark}{Nota}
+\newtheorem{definition}{Definición}
+\newtheorem{theorem}{Teorema}
+\newtheorem{example}[theorem]{Ejemplo}
+
+
+
 %opening
 \title{Teoría de Distribución}
 \author{Cristian Camilo Triana García}
-
 \begin{document}
 
 \maketitle
@@ -49,7 +65,27 @@ Se dice que la "derivada" de esta función es la función delta de Dirac $ \delt
 \begin{equation}
 	\int_{-\infty}^{+\infty}\delta(x) dx = 1.
 \end{equation} 
-Esta "función" y sus "derivadas" es usada con bastante frecuencia en la matemática.
-Para definir la función delta de Dirac, es necesario utilizar la noción de medida.
+Esta ``función'' y sus ``derivadas'' es usada con bastante frecuencia en la matemática.
+Para definir la función delta de Dirac formalmente, es necesario utilizar la noción de medida.
+
+Las distribuciones pueden ser definidas en $ \mathbb{R}^n $, sin embargo, antes de proceder con las definiciones, vamos a ver el caso de $ n =1 $ para entender un poco la lógica detrás.
+
+Cuando tenemos una función real $ f $, la relación que nos interesa es la que se da
+punto a punto, es decir, $ f(x) $ para $ x \in \mathbb{R} $, 
+en distintas aplicaciones lo que interesa no es la el valor puntual de la función 
+$ f(x) $, sino que nos interesa es su comportamiento al ser integrada, ya sea sola 
+o en producto con otra función. Esto es algo muy común en la física, cuando 
+por ejemplo un fenómeno es modelado por dos funciones cuyo producto nos
+proporciona información valiosa, o cuando se desean obtener promedios. 
+Así, obtenemos integrales del siguiente estilo:
+
+\begin{equation}
+	\int{f(x)\Phi(x)}dx.
+\end{equation}
+
+Teniendo en cuenta esto, podemos pensar en asignar a $ f $, el valor numérico obtenido al
+resolver la integral, en lugar de $ f(x) $.
+
+La función $ \Phi $ es llamada función \textit{test}, más adelante veremos cómo se hace su elección.
 
 \end{document}
