@@ -16,8 +16,8 @@
 %---Definitions
 \newtheorem{lemma}{Lema}
 \newtheorem{remark}{Nota}
-\newtheorem{definition}{Definición}
 \newtheorem{theorem}{Teorema}
+\newtheorem{definition}[theorem]{Definición}
 \newtheorem{example}[theorem]{Ejemplo}
 \newtheorem{corollary}[theorem]{Corolario}
 %bib import
@@ -129,6 +129,7 @@ $ \partial/\partial{x_k} $. El operador de orden mayor
 $ \partial^{p_1}_{1} \partial^{p_2}_{2} \cdots \partial^{p_n}_{n} $ lo denotamos
 por $ \partial^p $ y $ |p| = p_1 + \cdots + p_n $ es el orden de $ \partial^p $
 
+\subsection{Construyendo una Topología.}
 Denotamos por $ \mathscr{D}(\Omega) $ el conjunto formado por las funciones 
 $ \phi: \mathbb{R}^n \to \mathbb{R} $ cuyo soporte es compacto, y que todas sus
 derivadas parciales existen. Es decir, $ \phi \in \mathscr{D}(\Omega) $ si, y sólo si
@@ -146,10 +147,12 @@ Ahora, vamos a definir las siguientes normas
 
 Las normas que acabamos de ver nos sirven para definir una topología completa, 
 metrizable y localmente convexa en $ \mathscr{D}(\Omega, S) $, lo que hace 
-$ \mathscr{D}(\Omega, S) $ un espacio de Frechet. En \cite{Rudin} se encuentra 
-una prueba detallada de las propiedades de esta topología.
+$ \mathscr{D}(\Omega, S) $ un espacio de Frechet. En \cite{Edwards} y \cite{Rudin}
+se encuentran pruebas detalladas de las propiedades de esta topología.
 
-Ahora estamos listos para definir distribución.
+\subsection{Definición de Distribución.}
+
+Con lo que hemos construido hasta ahora, podemos realizar nuestra definición.
 
 \begin{definition}\normalfont
 	Un funcional lineal $ F $ en $ \mathscr{D}](\Omega) $ es llamado
@@ -166,10 +169,21 @@ Como cada distribución es un funcional lineal, tenemos las siguientes equivalen
 		\item $ F $ es una distribución.
 		\item Para cada sucesión $ (\phi_n) $, si $ \phi_n \to 0 $ entonces
 		$ F(\phi_n) \to 0 $.
-		\item 
+		\item Para cada compacto $ S\subset\Omega $ existe un entero
+		$ N > 0 $  y una constante $ C \in \mathbb{R} $, tal que la
+		desigualdad
+		\begin{equation}
+			|F(\phi)| \leq C \norm{\phi}^S_N,
+		\end{equation}
+		se cumple para cada $ \phi \in \mathscr{D}(\Omega, S)$.
 	\end{enumerate}
 \end{corollary}
 
+\subsection{Medidas y Funciones como Distribuciones.}
+
+El siguiente ejemplo
+Ya hemos definido una familia de funcionales continua, ahora vamos a proceder con
+la definición de convergencia y diferenciación.
 \cite{Rudin}
 \cite{Edwards}
 \cite{Halperin}
