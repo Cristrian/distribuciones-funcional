@@ -25,7 +25,7 @@
 
 
 %opening
-\title{Teoría de Distribución}
+\title{Teoría de Distribuciones}
 \author{Cristian Camilo Triana García}
 \begin{document}
 
@@ -101,20 +101,20 @@ $ \phi \in \mathbf{C}^\infty (\mathbb{R}) $ (infinitamente diferenciables), cuyo
 $ \left\{ x\in \mathbb{R}| \phi(x) \neq 0 \right\} $ es compacto.
 
 Ahora, si además $ f $ es diferenciable, tenemos que
-\begin{equation}\label{int:first}
+\begin{equation}\label{intro:first}
 	\int{f'\phi} = - \int{f\phi '}.
 \end{equation}
 Y si $ f $ es infinitamente diferenciable, entonces
-\begin{equation}\label{int:second}
+\begin{equation}\label{intro:second}
 	\int{f^{(k)}\phi} = (-1)^k \int{f\phi^{(k)}}.
 \end{equation}
 
 Estos resultados nos muestran el punto clave y la motivación para nuestras definiciones,
-si nos fijamos, en el lado derecho de las ecuaciones \ref{int:first} y
-\ref{int:second}, podemos ver que la derivada de $ f $ no es tenida en cuenta.
+si nos fijamos, en el lado derecho de las ecuaciones \ref{intro:first} y
+\ref{intro:second}, podemos ver que la derivada de $ f $ no es tenida en cuenta.
 Así, lo que queremos es construir un funcional $ F: \mathscr{D} \in \mathbb{R} $ ´tal 
 que
-\begin{equation}
+\begin{equation}\label{intro:diff}
 	F'(\phi) = -F(\phi').
 \end{equation}
 
@@ -162,7 +162,7 @@ Con lo que hemos construido hasta ahora, podemos realizar nuestra definición.
 \end{definition}
 
 Como cada distribución es un funcional lineal, tenemos las siguientes equivalencias.
-\begin{corollary}\normalfont
+\begin{theorem}\label{col:equiv}\normalfont
 	Dado $ F $ un funcional lineal en $ \mathscr{D}(\Omega) $, las siguientes
 	condiciones son equivalentes.
 	\begin{enumerate}[(a)]
@@ -177,11 +177,87 @@ Como cada distribución es un funcional lineal, tenemos las siguientes equivalen
 		\end{equation}
 		se cumple para cada $ \phi \in \mathscr{D}(\Omega, S)$.
 	\end{enumerate}
-\end{corollary}
+\end{theorem}
 
 \subsection{Medidas y Funciones como Distribuciones.}
+Tomemos una función compleja $ f\in \Omega $ localmente integrable.
+Así, tenemos que $ f $ es Lebesgue-medible y $ \int_{S}|f(x)|dx < \infty $
+para todo compacto $ S\subset\Omega $.
+Ahora, para cada $ \phi \in \Omega $ definamos
+\begin{equation}
+	F_{f}(\phi) = \int_{\Omega}{f(x)\phi(x)}dx.
+\end{equation}
+Si tomamos cualquier compacto $ S\subset \Omega $, obtenemos la desigualdad
+\begin{equation}\label{key}
+	|F_f(K)| \leq \left( \int_{S}|f| \right) \norm{\phi}_0.
+\end{equation}
 
-El siguiente ejemplo
+Y aplicando una de las equivalencias del teorema \ref{col:equiv}, tenemos que
+$ F_f $ es una distribución.
+Acabamos de ver que cada función localmente integrable, define una distribución,
+por esta razón se le suele llamar función a una distribución.
+
+\section{Diferenciación de Distribuciones}
+En la introducción, (ecuaciones \eqref{intro:first}, \eqref{intro:second}, \eqref{intro:diff} )
+vimos la motivación para realizar la siguiente definición de diferenciación
+\begin{definition}
+	Dada $ F $ una distribución y $ p=(p_1, \dots, p_n) $. Para cada 
+	$ \phi \in \mathscr{D}(\Omega) $ definimos
+	\begin{equation}\label{diff:def_diff}
+		(\partial^p F)(\phi) := (-1)^{|p|} F(\partial^p{\phi}). 
+	\end{equation} 
+\end{definition}
+
+\begin{theorem}\normalfont
+	Dada una distribución $ F $, $ (\partial^p F)(\phi)  $ también es una distribución.
+\end{theorem}
+\begin{proof}
+	La demostración es sencilla,  
+	\begin{equation*}
+		|(\partial^p F)(\phi) | = |F(\partial^p{\phi})| \leq C \norm{\partial^p(\phi)}_N
+			\leq  C \norm{\phi}_{N + |p|}.
+	\end{equation*}
+Y por el teorema \ref{col:equiv}, tenemos que $ (\partial^p F)(\phi) $ es una
+distribución.
+\end{proof}
+Vamos ahora a demostrar una propiedad importante de las derivadas
+\begin{theorem}\normalfont
+	Dada una distribución $ F $ se tiene que 
+	\[ (\partial^p \partial^k F)(\phi) = (\partial^{p+k} F)(\phi) \]. 
+\end{theorem}
+\begin{proof}
+	La demostración es inmediata con aplicando la definición de diferenciación
+	\begin{equation*}
+		\begin{split}
+			(\partial^p \partial^k F)(\phi) &= (-1)^{|p|}(\partial^k F)(\partial^p\phi) \\
+			& = (-1)^{|p| + |k|}(\partial^k \partial^p\phi) \\
+			& = (-1)^{|p + k|}(\partial^{p+k}\phi) \\
+			& = (\partial^{p+k}F)(\phi).
+		\end{split}
+	\end{equation*}
+\end{proof}
+
+Veamos el siguiente ejemplo de una distribución que no es una función.
+
+\begin{example}\normalfont
+	Tomemos la medida de Dirac $ \varepsilon_a $, localizada en un punto $ a \in \Omega $.
+	En el caso de una dimensión tendríamos que
+	\[ \partial \varepsilon_a(\phi) = - \varepsilon_a{\phi} = - \phi'(a) \]
+	para toda $ \phi \in \mathscr{D}(\Omega) $. Podemos escoger distintas sucesiones
+	$ (\phi_n) $ que convergen a $ 0 $, para las cuales $ \phi'(a) \neq 0 $.
+	De esta manera vemos que $ \partial \varepsilon_a $ no es una distribución, 
+	y por lo tanto no puede ser una función. En términos de física, las distribuciones
+	del tipo $ \partial^{p}\varepsilon_a  $ corresponden exactamente a los
+	multipolos puestos en $ a $.
+\end{example}
+Con esto ya hemos alcanzado varios de nuestros objetivos planteados al inicio de este trabajo,
+
+\section{Convergencia de Distribuciones}
+Vamos a estudiar la noción de convergencia, que como veremos, dadas las definiciones
+anteriores, es bastante natural. Tomando el dual topológico $ \mathscr{D}'(\Omega) $
+de $ \mathscr{D}(\Omega) $, surgen dos topologías naturales; la topología débil
+$ \sigma(\mathscr{D}', \mathscr{D}) $ y la topología fuerte 
+$ \beta(\mathscr{D}', \mathscr{D}) $.
 Ya hemos definido una familia de funcionales continua, ahora vamos a proceder con
 la definición de convergencia y diferenciación.
 \cite{Rudin}
