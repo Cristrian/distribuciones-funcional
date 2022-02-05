@@ -9,8 +9,8 @@
 \usepackage{amssymb}
 \usepackage{mathrsfs}
 \usepackage[scr=rsfso,cal=zapfc,frak=euler,bb=ams]{mathalfa}
-\usepackage{biblatex}
-
+\usepackage[backend=bibtex]{biblatex}
+\usepackage[shortlabels]{enumitem}
 %Commands
 \newcommand\norm[1]{\lVert#1\rVert}
 %---Definitions
@@ -19,6 +19,7 @@
 \newtheorem{definition}{Definición}
 \newtheorem{theorem}{Teorema}
 \newtheorem{example}[theorem]{Ejemplo}
+\newtheorem{corollary}[theorem]{Corolario}
 %bib import
 \addbibresource{bibliografia.bib}
 
@@ -145,8 +146,33 @@ Ahora, vamos a definir las siguientes normas
 
 Las normas que acabamos de ver nos sirven para definir una topología completa, 
 metrizable y localmente convexa en $ \mathscr{D}(\Omega, S) $, lo que hace 
-$ \mathscr{D}(\Omega, S) $ un espacio de Frechet.
+$ \mathscr{D}(\Omega, S) $ un espacio de Frechet. En \cite{Rudin} se encuentra 
+una prueba detallada de las propiedades de esta topología.
 
+Ahora estamos listos para definir distribución.
 
+\begin{definition}\normalfont
+	Un funcional lineal $ F $ en $ \mathscr{D}](\Omega) $ es llamado
+	\textbf{distribución} en $ \Omega $ si para cada $ S\subseteq\Omega $ relativamente
+	compacto, la restricción $ F\restriction{\mathscr{D}(\Omega, S)} $ es continua en
+	el espacio de Frechet $ \mathscr{D}(\Omega, S) $.
+\end{definition}
+
+Como cada distribución es un funcional lineal, tenemos las siguientes equivalencias.
+\begin{corollary}\normalfont
+	Dado $ F $ un funcional lineal en $ \mathscr{D}(\Omega) $, las siguientes
+	condiciones son equivalentes.
+	\begin{enumerate}[(a)]
+		\item $ F $ es una distribución.
+		\item Para cada sucesión $ (\phi_n) $, si $ \phi_n \to 0 $ entonces
+		$ F(\phi_n) \to 0 $.
+		\item 
+	\end{enumerate}
+\end{corollary}
+
+\cite{Rudin}
+\cite{Edwards}
+\cite{Halperin}
+\cite{Strichartz}
 \printbibliography
 \end{document}
