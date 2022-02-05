@@ -7,14 +7,20 @@
 \usepackage{amsmath}
 \usepackage{amsfonts}
 \usepackage{amssymb}
+\usepackage{mathrsfs}
+\usepackage[scr=rsfso,cal=zapfc,frak=euler,bb=ams]{mathalfa}
+\usepackage{biblatex}
 
+%Commands
+\newcommand\norm[1]{\lVert#1\rVert}
 %---Definitions
 \newtheorem{lemma}{Lema}
 \newtheorem{remark}{Nota}
 \newtheorem{definition}{Definición}
 \newtheorem{theorem}{Teorema}
 \newtheorem{example}[theorem]{Ejemplo}
-
+%bib import
+\addbibresource{bibliografia.bib}
 
 
 %opening
@@ -80,12 +86,67 @@ proporciona información valiosa, o cuando se desean obtener promedios.
 Así, obtenemos integrales del siguiente estilo:
 
 \begin{equation}
-	\int{f(x)\Phi(x)}dx.
+	\int{f(x)\phi(x)}dx.
 \end{equation}
 
-Teniendo en cuenta esto, podemos pensar en asignar a $ f $, el valor numérico obtenido al
-resolver la integral, en lugar de $ f(x) $.
+Teniendo en cuenta esto, podemos pensar en asignar a $ f $, el valor numérico obtenido 
+al resolver la integral, en lugar de $ f(x) $.
 
-La función $ \Phi $ es llamada función \textit{test}, más adelante veremos cómo se hace su elección.
+La función $ \phi $ es llamada función \textit{test}, más adelante veremos cómo se hace 
+su elección.
 
+Sea $ \mathscr{D}(\mathbb{R}) $ el espacio vectorial de todas las funciones 
+$ \phi \in \mathbf{C}^\infty (\mathbb{R}) $ (infinitamente diferenciables), cuyo soporte
+$ \left\{ x\in \mathbb{R}| \phi(x) \neq 0 \right\} $ es compacto.
+
+Ahora, si además $ f $ es diferenciable, tenemos que
+\begin{equation}\label{int:first}
+	\int{f'\phi} = - \int{f\phi '}.
+\end{equation}
+Y si $ f $ es infinitamente diferenciable, entonces
+\begin{equation}\label{int:second}
+	\int{f^{(k)}\phi} = (-1)^k \int{f\phi^{(k)}}.
+\end{equation}
+
+Estos resultados nos muestran el punto clave y la motivación para nuestras definiciones,
+si nos fijamos, en el lado derecho de las ecuaciones \ref{int:first} y
+\ref{int:second}, podemos ver que la derivada de $ f $ no es tenida en cuenta.
+Así, lo que queremos es construir un funcional $ F: \mathscr{D} \in \mathbb{R} $ ´tal 
+que
+\begin{equation}
+	F'(\phi) = -F(\phi').
+\end{equation}
+
+\section{Distribuciones y sus propiedades básicas.}
+Cómo lo que queremos es definir un funcional continuo, primero necesitamos construir 
+una topología, en la cual se validará la continuidad.
+
+El trabajo que vamos a desarrollar ahora es para $ \mathbb{R}^n $. En las 
+definiciones siguientes $ \Omega $ es un subconjunto abierto de 
+$ \mathbb{R}^n $. Por $ \partial_{k} $ vamos a denotar la derivada parcial
+$ \partial/\partial{x_k} $. El operador de orden mayor 
+$ \partial^{p_1}_{1} \partial^{p_2}_{2} \cdots \partial^{p_n}_{n} $ lo denotamos
+por $ \partial^p $ y $ |p| = p_1 + \cdots + p_n $ es el orden de $ \partial^p $
+
+Denotamos por $ \mathscr{D}(\Omega) $ el conjunto formado por las funciones 
+$ \phi: \mathbb{R}^n \to \mathbb{R} $ cuyo soporte es compacto, y que todas sus
+derivadas parciales existen. Es decir, $ \phi \in \mathscr{D}(\Omega) $ si, y sólo si
+$ \phi \in \mathbf{C}^{\infty}(\Omega) $ y su soporte 
+$ \left\{ x| \phi(x) \neq 0 \right\} $ es compacto en $ \Omega $.
+Dado un subconjunto $ S $ de $ \Omega $, $ \mathscr{D}(\Omega, S) $ denota el 
+subespacio de $ \mathscr{D}(\Omega) $ compuesto por las funciones 
+$ \phi\in\mathscr{D}(\Omega) $ cuyo soporte está contenido en $ S $.
+
+Ahora, vamos a definir las siguientes normas
+\begin{equation}
+ 	\norm{\phi}^{S}_{m} := 
+ 	\sup{ \left\{ |\partial^p{\phi(x)}|: x\in S, \quad |p| < m  \right\} }
+\end{equation}
+
+Las normas que acabamos de ver nos sirven para definir una topología completa, 
+metrizable y localmente convexa en $ \mathscr{D}(\Omega, S) $, lo que hace 
+$ \mathscr{D}(\Omega, S) $ un espacio de Frechet.
+
+
+\printbibliography
 \end{document}
