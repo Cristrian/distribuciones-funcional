@@ -32,7 +32,14 @@
 \maketitle
 
 \begin{abstract}\normalsize
-Estudiar teoría de distribución
+La Teoría de distribución nace muchos años después de estar
+siendo usada por físicos y matemáticos, se intuía que la noción
+de diferenciación podía ser expandida, sin embargo, no se contaba
+con las herramientas técnicas que permitieran formalizar los objetos
+con los cuales se venían trabajando. Con los avances en la teoría de
+la medida y el análisis funcional, se puede extender la clase 
+de los objetos derivables, esta extensión son las distribuciones,
+de las cuales veremos sus propiedades básicas en este trabajo.
 \end{abstract}
 
 
@@ -74,6 +81,8 @@ Se dice que la "derivada" de esta función es la función delta de Dirac $ \delt
 \end{equation} 
 Esta ``función'' y sus ``derivadas'' es usada con bastante frecuencia en la matemática.
 Para definir la función delta de Dirac formalmente, es necesario utilizar la noción de medida.
+Para una introducción más profunda a las motivaciones de la definición 
+de distribución puede consultar \cite{Strichartz}.
 
 Las distribuciones pueden ser definidas en $ \mathbb{R}^n $, sin embargo, antes de proceder con las definiciones, vamos a ver el caso de $ n =1 $ para entender un poco la lógica detrás.
 
@@ -250,19 +259,63 @@ Veamos el siguiente ejemplo de una distribución que no es una función.
 	del tipo $ \partial^{p}\varepsilon_a  $ corresponden exactamente a los
 	multipolos puestos en $ a $.
 \end{example}
-Con esto ya hemos alcanzado varios de nuestros objetivos planteados al inicio de este trabajo,
 
-\section{Convergencia de Distribuciones}
+
+
+\subsection{Sucesiones de Distribuciones}
 Vamos a estudiar la noción de convergencia, que como veremos, dadas las definiciones
 anteriores, es bastante natural. Tomando el dual topológico $ \mathscr{D}'(\Omega) $
-de $ \mathscr{D}(\Omega) $, surgen dos topologías naturales; la topología débil
-$ \sigma(\mathscr{D}', \mathscr{D}) $ y la topología fuerte 
-$ \beta(\mathscr{D}', \mathscr{D}) $.
-Ya hemos definido una familia de funcionales continua, ahora vamos a proceder con
-la definición de convergencia y diferenciación.
-\cite{Rudin}
-\cite{Edwards}
-\cite{Halperin}
-\cite{Strichartz}
+de $ \mathscr{D}(\Omega) $, surgen una topología natural; la topología débil
+$ \sigma(\mathscr{D}', \mathscr{D}) $.
+De esta manera, cuando decimos que $ F_i \overset{w}{\longrightarrow} F $, significa que
+\[  \underset{n\to \infty}{\lim}{F_i}(\phi) = F (\phi)  \].
+El siguiente teorema nos da una propiedad, que aunque sencilla, es fuerte y usa un teorema
+grande del análisis funcional.
+\begin{theorem}\normalfont
+	Dadas $ F_i $ distribuciones, donde $ i \in \mathbb{N} $, tales que
+	\begin{equation}
+		F(\phi) = \underset{n\to \infty}{\lim}{F_i}(\phi)
+	\end{equation}
+existe para cada $ \phi \in \mathscr{D}(\Omega) $. Entonces $ F $ es una distribución y
+\begin{equation}
+	\partial^{p}(\phi) \overset{w}{\longrightarrow} \partial^p F.
+\end{equation}
+\end{theorem}
+\begin{proof}
+	Sea $ S $ un compacto cualquiera subconjunto de $ \Omega $.
+	Consideremos la restricción al espacio $ \mathscr{D}(\Omega, S) $, al restringir el dominio
+	la condición $ F(\phi) = \underset{n\to \infty}{\lim}{F_i}(\phi) $ se sigue cumpliendo para
+	cada $ \phi \in \mathscr{D}(\Omega, S) $. Como $ \mathscr{D}(\Omega, S)  $ es un espacio 
+	de Banach, podemos aplicar el principio de acotación uniforme, y de esta manera
+	obtenemos que $ F\restriction{ \mathscr{D}(\Omega, S)} $ es continuo para todo compacto
+ 	$ S\subseteq\Omega $. Y utilizando el teorema \ref{col:equiv}, tenemos que $ F $
+ 	es continuo en $ \mathscr{D}(\Omega) $, es decir, $ F $ es una distribución.
+ 	Así, diferenciando obtenemos que
+ 	\begin{equation}
+ 		\begin{split}
+ 			(\partial^p F)(\phi) &= (-1)^{|p|} F(\partial^p \phi) \\
+ 			& = (-1)^{|p|} \underset{n\to \infty}{\lim}{F_i}(\partial^p \phi)\\
+ 			& = \underset{n\to \infty}{\lim}{(\partial^p F_i)}(\phi).
+ 		\end{split}
+ 	\end{equation}
+\end{proof}
+\section{Multiplicación de una Distribución por una Función.}
+Si $ g \in \mathbf{C}^\infty(\Omega) $, entonces $ \phi \to g\phi $ es un endomorfismo
+continuo de $ \mathscr{D}(\Omega) $, y así podemos definir el producto de $ g $ con 
+una distribución $ F $ en $ \Omega $ como el resultado de aplicar el adjunto de este
+endomorfismo a $ X $. En otras palabras, para $ \phi \in \mathscr{D}(\Omega) $
+\begin{equation}
+	gF(\phi) = F(g\phi).
+\end{equation}
+Hay que tener cuidado con la notación, ya que si $ g\in \mathscr{D}(\Omega) $ entonces
+$  F(g) $ es un \textit{número}, mientras que $ gF $ es una \textit{distribución}.
+La norma ordinaria de la diferenciación aplica, es decir que
+\begin{equation*}
+	\partial_{k}(gF) = (\partial_{k} g)F + g\cdot \partial_{k}F.
+\end{equation*}
+Para ver dos demostraciones completas y diferentes de que efectivamente
+$ gF $ es una distribución se puede consultar \cite{Halperin} o \cite{Rudin}.
+
+\newpage
 \printbibliography
 \end{document}
